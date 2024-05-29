@@ -115,3 +115,45 @@ const newObj = new Object({
 console.log(newObj);
 
 ```
+
+### Create()
+
+```js 
+// Create Method in object.
+/*
+ create method is a static method , it uses the existing object as the prototype of the newly created object. 
+ 
+*/
+const obj1 = {
+   name:'Nagaraj s',
+   age:20,
+   getName : function(){
+      return this.name;
+   },
+   getEmail: function(){
+      return this.email;
+   }
+};
+
+const newObj = Object.create(obj1);
+
+console.log(newObj) // {}
+newObj.email = 'nagaraj516700@gmail.com';
+
+console.log(newObj);
+
+//but it can hold the property and value of existing obj 
+
+console.log(newObj.name);
+
+//New Object and Existing Objects are not equal.
+
+console.log(newObj === obj1);
+
+/*
+ Actually Create method creates the new object with the help of existing object ,it can hold the property of existing object  
+*/
+
+
+
+```
