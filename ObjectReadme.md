@@ -267,3 +267,64 @@ for (i in obj){
 
 
 ```
+
+### entries() & formEntries()
+```js
+
+/*
+   Object.entries()
+
+   It is a static method .It converts in into array format and return the arrays.It follows numerical order.
+*/
+
+
+const obj = {
+   name:'Object',
+   follows:10,
+   likes:0,
+   '10':20,
+   '1':30
+}
+
+const entry1 = Object.entries(obj);
+
+console.log(entry1);//[[ '1', 30 ],[ '10', 20 ],[ 'name', 'Object' ],[ 'follows', 10 ],[ 'likes', 0 ]]
+console.log(typeof entry1); //Array Object
+
+const entry2 = Object.entries("foo");
+
+console.log(entry2);//[ [ '0', 'f' ], [ '1', 'o' ], [ '2', 'o' ] ]
+
+/* Object.formEntries()
+
+   It is a static method .It get the array input and return the object form.It is opposite to Object.entries().
+
+
+*/
+
+console.log(Object.fromEntries(entry1)); // { '1': 30, '10': 20, name: 'Object', follows: 10, likes: 0 }
+
+
+
+```
+
+### freeze()
+```js
+/* Object.freeze()
+   It is a static method ,which is used to freeze or can not to change /add the properties and values.It return the same objects.
+*/
+
+const obj = {
+   name:'nagaraj s',
+   age:20,
+};
+
+Object.freeze(obj);
+console.log(Object.freeze(obj)) //{ name: 'nagaraj s', age: 20 }
+obj.age = 30; //throws error if it in strict mode.
+obj.follows = 50; //throws error if it in strict mode.
+
+console.log(obj.age); //20 
+
+console.log(obj)//{ name: 'nagaraj s', age: 20 }
+```
