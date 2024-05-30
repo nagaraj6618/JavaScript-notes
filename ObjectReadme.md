@@ -157,3 +157,113 @@ console.log(newObj === obj1);
 
 
 ```
+
+### defineProperties() & defineProperty()
+```js 
+/* defineProperties()  
+ 
+It is a static method ,it helps to add or change the properties and it mainly used for getter and setter function.
+
+
+*/
+const obj = {
+   name:'object',
+   follows:10,
+};
+
+
+const newObj = Object.defineProperties(obj,{
+   likes:{
+      value:100,
+      enumerable:true,
+      writable:true,
+      configurable:true
+   }
+});
+console.log(obj) //{name:'object',follows:10} it will not print the likes ,but it have the likes property 
+console.log(obj.likes);
+console.log(newObj)
+
+obj.likes = 30;
+console.log(obj.likes);
+
+//configuring the property
+Object.defineProperty(obj,'likes',{
+   
+      enumerable:false
+   
+})
+console.log(obj);
+//Add setter and getter function
+
+Object.defineProperties(obj,{
+   getter:{
+      value:function(){
+         return obj.name;
+      },
+      enumerable : false,
+      configurable:true,
+   },
+   setter:{
+      value:function(name){
+         obj.name = name;
+      },
+      enumerable:true,
+      configurable:true,
+   }
+});
+
+console.log(obj.getter());
+
+console.log(obj); 
+
+obj.setter("Nagaraj S");
+
+console.log(obj.getter());
+
+console.log(obj);
+
+Object.defineProperty(obj,'getter',{
+   get(){
+      return this.name
+   }
+});
+Object.defineProperties(obj,{
+   getter:{
+      get(){
+         return this.name;
+      },
+      enumerable:false,
+   },
+   setter:{
+      set(name){
+         this.name = name;
+      },
+      
+   }
+})
+console.log(obj);
+
+console.log(obj.getter);
+obj.setter = "Hello World"
+console.log(obj.getter);
+
+Object.defineProperty(obj,'length',{
+   get(){
+      return this.name.length;
+   },
+   enumerable:false,
+   configurable:false,
+   
+})
+
+console.log(obj);
+console.log(obj.length);
+
+
+for (i in obj){
+   console.log(obj[i]);
+}
+
+
+```
