@@ -328,3 +328,57 @@ console.log(obj.age); //20
 
 console.log(obj)//{ name: 'nagaraj s', age: 20 }
 ```
+### getOwnPropertyDescriptor() and getOwnPropertyDescriptors()
+
+```js
+/* 
+   getOwnPropertyDescriptor() & getOwnPropertyDescriptors();
+
+   It is a static Method ,It is return the description of the property .
+*/
+
+const obj = {
+   name:'nagaraj s',
+   age:23,
+}
+
+console.log(obj);
+Object.defineProperties(obj,{
+   getter:{
+      get(){
+         return this.name;
+      },
+      enumerable:true,
+      configurable:false,
+   }
+});
+
+console.log(obj.getter);
+const descriptor = Object.getOwnPropertyDescriptors(obj);
+
+console.log(descriptor);
+
+/*
+{
+  name: {
+    value: 'nagaraj s',
+    writable: true,
+    enumerable: true,
+    configurable: true
+  },
+  age: { value: 23, writable: true, enumerable: true, configurable: true },
+  getter: {
+    get: [Function: get],
+    set: undefined,
+    enumerable: true,
+    configurable: false
+  }
+ 
+ */
+
+const ageDescriptor = Object.getOwnPropertyDescriptor(obj,'age');
+
+console.log(ageDescriptor); //{ value: 23, writable: true, enumerable: true, configurable: true }
+
+
+```
